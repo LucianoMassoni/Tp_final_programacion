@@ -1,14 +1,18 @@
 {
-    "peliculas":[
+    "peliculas": [
         {
             "id": 1,
             "titulo": "Kill Bill",
             "anno": "2003",
             "director": "Quentin Tarantino",
             "duracion": "111 min.",
-            "genero": ["Accion", "Crimen", "Drama"],
-            "sinopsis": "Tras despertar de un coma de cuatro años, una antigua asesina se venga del equipo de asesinos que la traicionó.",
-            "poster": "https://www.imdb.com/title/tt0266697/mediaviewer/rm3086980609/?ref_=tt_ov_i" 
+            "genero": [
+                "Accion",
+                "Crimen",
+                "Drama"
+            ],
+            "sinopsis": "Tras despertar de un coma de cuatro a\u00f1os, una antigua asesina se venga del equipo de asesinos que la traicion\u00f3.",
+            "poster": "https://www.imdb.com/title/tt0266697/mediaviewer/rm3086980609/?ref_=tt_ov_i"
         },
         {
             "id": 2,
@@ -16,9 +20,13 @@
             "anno": "2004",
             "director": "Quentin Tarantino",
             "duracion": "137 min.",
-            "genero": ["Accion", "Crimen", "Suspenso"],
-            "sinopsis": "La novia continúa su búsqueda de venganza contra su antiguo jefe y amante Bill, el solitario portero Budd y la traicionera Elle, tuerta.",
-            "poster": "https://www.imdb.com/title/tt0378194/mediaviewer/rm1315726080/?ref_=tt_ov_i"  
+            "genero": [
+                "Accion",
+                "Crimen",
+                "Suspenso"
+            ],
+            "sinopsis": "La novia contin\u00faa su b\u00fasqueda de venganza contra su antiguo jefe y amante Bill, el solitario portero Budd y la traicionera Elle, tuerta.",
+            "poster": "https://www.imdb.com/title/tt0378194/mediaviewer/rm1315726080/?ref_=tt_ov_i"
         },
         {
             "id": 3,
@@ -26,9 +34,13 @@
             "anno": "1990",
             "director": "Martin Scorsese",
             "duracion": "146 min.",
-            "genero": ["Biografia", "Crimen", "Drama"],
-            "sinopsis": "La historia de Henry Hill y su vida en la mafia, abarcando su relación con su esposa Karen Hill y sus socios mafiosos Jimmy Conway y Tommy DeVito en el sindicato del crimen italoamericano.",
-            "poster": "https://www.imdb.com/title/tt0099685/mediaviewer/rm865367296/?ref_=tt_ov_i" 
+            "genero": [
+                "Biografia",
+                "Crimen",
+                "Drama"
+            ],
+            "sinopsis": "La historia de Henry Hill y su vida en la mafia, abarcando su relaci\u00f3n con su esposa Karen Hill y sus socios mafiosos Jimmy Conway y Tommy DeVito en el sindicato del crimen italoamericano.",
+            "poster": "https://www.imdb.com/title/tt0099685/mediaviewer/rm865367296/?ref_=tt_ov_i"
         },
         {
             "id": 4,
@@ -36,9 +48,12 @@
             "anno": "1976",
             "director": "Martin Scorsese",
             "duracion": "114 min.",
-            "genero": ["Crimen", "Drama"],
-            "sinopsis": "Un veterano con problemas de salud mental trabaja como taxista en Nueva York, donde su percepción de la decadencia a su alrededor alimenta su deseo de violencia.",
-            "poster": "https://www.imdb.com/title/tt0075314/mediaviewer/rm145208321/?ref_=tt_ov_i" 
+            "genero": [
+                "Crimen",
+                "Drama"
+            ],
+            "sinopsis": "Un veterano con problemas de salud mental trabaja como taxista en Nueva York, donde su percepci\u00f3n de la decadencia a su alrededor alimenta su deseo de violencia.",
+            "poster": "https://www.imdb.com/title/tt0075314/mediaviewer/rm145208321/?ref_=tt_ov_i"
         },
         {
             "id": 5,
@@ -46,9 +61,12 @@
             "anno": "1971",
             "director": "Stanley Kubrick",
             "duracion": "136 min.",
-            "genero": ["Crimen", "Ciencia ficcion"],
+            "genero": [
+                "Crimen",
+                "Ciencia ficcion"
+            ],
             "sinopsis": "A Clockwork Orange",
-            "poster": "https://www.imdb.com/title/tt0066921/mediaviewer/rm130452225/?ref_=tt_ov_i" 
+            "poster": "https://www.imdb.com/title/tt0066921/mediaviewer/rm130452225/?ref_=tt_ov_i"
         },
         {
             "id": 6,
@@ -56,9 +74,13 @@
             "anno": "2007",
             "director": "Hermanos Coen",
             "duracion": "122 min.",
-            "genero": ["Crimen", "Drama", "Suspenso"],
-            "sinopsis": "La violencia y el caos se desatan después de que un cazador tropiece con un negocio de drogas que salió mal y con más de dos millones de dólares en efectivo cerca del Río Grande.",
-            "poster": "https://www.imdb.com/title/tt0477348/mediaviewer/rm1750690560/?ref_=tt_ov_i" 
+            "genero": [
+                "Crimen",
+                "Drama",
+                "Suspenso"
+            ],
+            "sinopsis": "La violencia y el caos se desatan despu\u00e9s de que un cazador tropiece con un negocio de drogas que sali\u00f3 mal y con m\u00e1s de dos millones de d\u00f3lares en efectivo cerca del R\u00edo Grande.",
+            "poster": "https://www.imdb.com/title/tt0477348/mediaviewer/rm1750690560/?ref_=tt_ov_i"
         },
         {
             "id": 7,
@@ -66,9 +88,12 @@
             "anno": "1980",
             "director": "Stanley Kubrick",
             "duracion": "146 min.",
-            "genero": ["Drama", "Terror"],
-            "sinopsis": "Una familia se dirige a un hotel aislado para pasar el invierno. Allí, una presencia espiritual maligna violenta al padre, mientras el hijo, psíquico, tiene horripilantes visiones del pasado y del futuro.",
-            "poster": "https://www.imdb.com/title/tt0081505/mediaviewer/rm1237264640/?ref_=tt_ov_i"  
+            "genero": [
+                "Drama",
+                "Terror"
+            ],
+            "sinopsis": "Una familia se dirige a un hotel aislado para pasar el invierno. All\u00ed, una presencia espiritual maligna violenta al padre, mientras el hijo, ps\u00edquico, tiene horripilantes visiones del pasado y del futuro.",
+            "poster": "https://www.imdb.com/title/tt0081505/mediaviewer/rm1237264640/?ref_=tt_ov_i"
         },
         {
             "id": 8,
@@ -76,9 +101,12 @@
             "anno": "1979",
             "director": "Ridley Scott",
             "duracion": "117 min.",
-            "genero": ["Ciencia ficcion", "Terror"],
-            "sinopsis": "La tripulación de una nave espacial comercial se encuentra con una forma de vida mortal tras investigar una transmisión desconocida.",
-            "poster": "https://www.imdb.com/title/tt0078748/mediaviewer/rm2032147969/?ref_=tt_ov_i" 
+            "genero": [
+                "Ciencia ficcion",
+                "Terror"
+            ],
+            "sinopsis": "La tripulaci\u00f3n de una nave espacial comercial se encuentra con una forma de vida mortal tras investigar una transmisi\u00f3n desconocida.",
+            "poster": "https://www.imdb.com/title/tt0078748/mediaviewer/rm2032147969/?ref_=tt_ov_i"
         },
         {
             "id": 9,
@@ -86,9 +114,12 @@
             "anno": "1998",
             "director": "Hermanos Coen",
             "duracion": "117 min.",
-            "genero": ["Comedia", "Crimen"],
-            "sinopsis": "Jeff 'The Dude' Lebowski, confundido con un millonario del mismo nombre, busca restitución por su dañada alfombra, y recluta a sus compañeros de bolos para ayudarlo.",
-            "poster": "https://www.imdb.com/title/tt0118715/mediaviewer/rm318364928/?ref_=tt_ov_i" 
+            "genero": [
+                "Comedia",
+                "Crimen"
+            ],
+            "sinopsis": "Jeff 'The Dude' Lebowski, confundido con un millonario del mismo nombre, busca restituci\u00f3n por su da\u00f1ada alfombra, y recluta a sus compa\u00f1eros de bolos para ayudarlo.",
+            "poster": "https://www.imdb.com/title/tt0118715/mediaviewer/rm318364928/?ref_=tt_ov_i"
         },
         {
             "id": 10,
@@ -96,9 +127,11 @@
             "anno": "1987",
             "director": "Stuart Gordon",
             "duracion": "77 min.",
-            "genero": ["Terror"],
-            "sinopsis": "Gabriel y Hilary, una pareja de ancianos que se dedican a fabricar muñecas de artesanía, dan cobijo en su casa de campo a varios excursionistas durante una noche de tormenta. El hijo de uno de los excursionistas descubre durante la noche que las muñecas son en realidad, seres humanos a los que el matrimonio ha convertido en miniaturas con el fin de manipularlos para llevar a cabo sus perversos planes.",
-            "poster": "https://www.imdb.com/title/tt0092906/mediaviewer/rm3029984256/?ref_=tt_ov_i" 
+            "genero": [
+                "Terror"
+            ],
+            "sinopsis": "Gabriel y Hilary, una pareja de ancianos que se dedican a fabricar mu\u00f1ecas de artesan\u00eda, dan cobijo en su casa de campo a varios excursionistas durante una noche de tormenta. El hijo de uno de los excursionistas descubre durante la noche que las mu\u00f1ecas son en realidad, seres humanos a los que el matrimonio ha convertido en miniaturas con el fin de manipularlos para llevar a cabo sus perversos planes.",
+            "poster": "https://www.imdb.com/title/tt0092906/mediaviewer/rm3029984256/?ref_=tt_ov_i"
         },
         {
             "id": 11,
@@ -106,9 +139,12 @@
             "anno": "1978",
             "director": "John Carpenter",
             "duracion": "91 min.",
-            "genero": ["Terror", "Suspenso"],
-            "sinopsis": "Quince años después de asesinar a su hermana en la noche de Halloween de 1963, Michael Myers se escapa de un hospital psiquiátrico y regresa al pequeño pueblo de Haddonfield, Illinois, para volver a matar.",
-            "poster": "https://www.imdb.com/title/tt0077651/mediaviewer/rm952988416/?ref_=tt_ov_i" 
+            "genero": [
+                "Terror",
+                "Suspenso"
+            ],
+            "sinopsis": "Quince a\u00f1os despu\u00e9s de asesinar a su hermana en la noche de Halloween de 1963, Michael Myers se escapa de un hospital psiqui\u00e1trico y regresa al peque\u00f1o pueblo de Haddonfield, Illinois, para volver a matar.",
+            "poster": "https://www.imdb.com/title/tt0077651/mediaviewer/rm952988416/?ref_=tt_ov_i"
         },
         {
             "id": 12,
@@ -116,9 +152,11 @@
             "anno": "1984",
             "director": "Wes Craven",
             "duracion": "91 min.",
-            "genero": ["Terror"],
-            "sinopsis": "Varias personas son perseguidas por un cruel asesino en serie que mata a sus víctimas durante sus sueños. Mientras los supervivientes tratan de encontrar el motivo por el que han sido elegidos, el asesino no desperdiciará ninguna ocasión para matarlos tan pronto como se duerman.",
-            "poster": "https://www.imdb.com/title/tt0087800/mediaviewer/rm2867542272/?ref_=tt_ov_i"  
+            "genero": [
+                "Terror"
+            ],
+            "sinopsis": "Varias personas son perseguidas por un cruel asesino en serie que mata a sus v\u00edctimas durante sus sue\u00f1os. Mientras los supervivientes tratan de encontrar el motivo por el que han sido elegidos, el asesino no desperdiciar\u00e1 ninguna ocasi\u00f3n para matarlos tan pronto como se duerman.",
+            "poster": "https://www.imdb.com/title/tt0087800/mediaviewer/rm2867542272/?ref_=tt_ov_i"
         },
         {
             "id": 13,
@@ -126,9 +164,11 @@
             "anno": "1974",
             "director": "Tobe Hooper",
             "duracion": "83 min.",
-            "genero": ["Terror"],
+            "genero": [
+                "Terror"
+            ],
             "sinopsis": "Cinco amigos se dirigen a una zona rural de Texas para visitar la tumba de un abuelo. En el camino se topan con lo que parece ser una casa abandonada, solo para descubrir algo siniestro dentro. Algo armado con una motosierra.",
-            "poster": "https://www.imdb.com/title/tt0072271/mediaviewer/rm0581888/?ref_=tt_ov_i" 
+            "poster": "https://www.imdb.com/title/tt0072271/mediaviewer/rm0581888/?ref_=tt_ov_i"
         },
         {
             "id": 14,
@@ -136,9 +176,13 @@
             "anno": "1996",
             "director": "Robert Rodriguez",
             "duracion": "108 min.",
-            "genero": ["Accion", "Crimen", "Terror"],
-            "sinopsis": "Dos criminales y sus rehenes entran sin saberlo en un un bar de carretera para motociclistas y camioneros poblado de vampiros, con caóticos resultados.",
-            "poster": "https://www.imdb.com/title/tt0116367/mediaviewer/rm1274254849/?ref_=tt_ov_i" 
+            "genero": [
+                "Accion",
+                "Crimen",
+                "Terror"
+            ],
+            "sinopsis": "Dos criminales y sus rehenes entran sin saberlo en un un bar de carretera para motociclistas y camioneros poblado de vampiros, con ca\u00f3ticos resultados.",
+            "poster": "https://www.imdb.com/title/tt0116367/mediaviewer/rm1274254849/?ref_=tt_ov_i"
         },
         {
             "id": 15,
@@ -146,9 +190,27 @@
             "anno": "1985",
             "director": "Larry Cohen",
             "duracion": "87 min.",
-            "genero": ["Comedia", "Terror", "Ciencia ficcion"],
-            "sinopsis": "Una misteriosa sustancia viscosa es publicitada como postre de moda, pero resulta que crea consumidores zombi que solo quieren comer más a cualquier coste.",
-            "poster": "https://www.imdb.com/title/tt0090094/mediaviewer/rm758638080/?ref_=tt_ov_i" 
-        }
+            "genero": [
+                "Comedia",
+                "Terror",
+                "Ciencia ficcion"
+            ],
+            "sinopsis": "Una misteriosa sustancia viscosa es publicitada como postre de moda, pero resulta que crea consumidores zombi que solo quieren comer m\u00e1s a cualquier coste.",
+            "poster": "https://www.imdb.com/title/tt0090094/mediaviewer/rm758638080/?ref_=tt_ov_i"
+        },
+        {
+            "titulo": "Beetlejuice",
+            "anno": "1988",
+            "director": "Tim burtom",
+            "duracion": "92 min.",
+            "genero": [
+                "Comedia",
+                "Fantasia"
+            ],
+            "sinopsis": "Los espiritus de una pareja fallecida son acosados por una familia insoportable que se ha instalado en su casa, y contratan a un espiritu maligno para que los expulse.",
+            "poster": "https://www.imdb.com/title/tt0094721/mediaviewer/rm2212181760/?ref_=tt_ov_i",
+            "id": 16
+        },
+        {}
     ]
 }
