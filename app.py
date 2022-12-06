@@ -71,17 +71,20 @@ def cargar_pelicula():
             f.close()
         return Response(datos_pelicula, status=HTTPStatus.OK)
 
+
 @app.route("/peliculas/<id>", methods=["PUT"])
 def modificar_pelicula(id):
     int_id = int(id)
     datos_pelicula = request.get_json()
 
     for pelicula in peliculas["peliculas"]:
-        if pelicula == {}:
+        if pelicula == {}:                  #cuando se clearea un dict queda asi, vacio; Si esta asi pasa al siguiente
             continue
         elif pelicula["id"] == int_id:
+            #En el for, la i itera sobre las peliculas, la k sobre los datos; a pelicula sub key le da el dato sub la misma key.
             for i, k in zip(pelicula.keys(), datos_pelicula.keys()):
                 pelicula[i] = datos_pelicula[i]
+            
             with open ("json/peliculas.json", "w") as f:
                 json.dump(peliculas, f, indent=4)
                 f.close()
@@ -89,11 +92,12 @@ def modificar_pelicula(id):
     else:
         return Response("La pelicula no existe", status=HTTPStatus.BAD_REQUEST)
 
+
 @app.route("/peliculas/<id>", methods=["DELETE"])
 def eliminar_pelicula(id):
     int_id = int(id)
     for pelicula in peliculas["peliculas"]:
-        if pelicula == {}:
+        if pelicula == {}:                  #cuando se clearea un dict queda asi, vacio; Si esta asi pasa al siguiente
             continue
         elif pelicula["id"] == int_id:
             pelicula.clear()
@@ -104,3 +108,71 @@ def eliminar_pelicula(id):
     else:
         return Response("La pelicula no existe", status=HTTPStatus.BAD_REQUEST)
 
+#comentarios
+@app.route("/peliculas/<id_peli>/comentarios")
+def mostrar_comentario_pelicula(id_peli):
+    id_peli= int(id_peli)
+    lista_comentarios = []
+    for comentario in comentarios["comentarios"]:
+        if comentario == {}:
+            continue
+        elif comentario["id_pelicula"] == id_peli:
+            lista_comentarios.append(comentario)
+    return lista_comentarios
+
+@app.route("/<id_usuario>/peliculas/<id_pelicula>/comentarios", methods=["POST"])
+def crear_comentario_pelicula(id_usuario, id_pelicula):
+    id_pelicula = int(id_pelicula)
+    id_comentario = len(comentarios["comentarios"]) + 1
+    print(id_comentario)
+    datos_comentario = request.get_json()
+    for pelicula in peliculas["peliculas"]:
+        if pelicula == {}:
+            continue
+        elif pelicula["id"] == id_pelicula:
+            datos_comentario["id"] = id_comentario
+            datos_comentario["id_usuario"] = int(id_usuario)
+            datos_comentario["id_pelicula"] = id_pelicula
+            comentarios["comentarios"].append(datos_comentario)
+            with open ("json/comentarios.json", "w") as f:
+                json.dump(comentarios, f, indent=4)
+                f.close()
+            return Response("Comentario hecho con exito", status=HTTPStatus.OK)
+    else:
+        return Response("Error al ingresar un dato", status=HTTPStatus.BAD_REQUEST)
+
+@app.route("/<id_usuario>/comentario/<id_comentario>", methods=["PUT"])
+def modificar_comentario(id_usuario, id_comentario):
+    id_comentario = int(id_comentario)
+    id_usuario = int(id_usuario)
+    datos_comentario = request.get_json()
+
+    for comentario in comentarios["comentarios"]:
+        if comentario == {}:
+            continue
+        elif comentario["id"] == id_comentario and comentario["id_usuario"] == id_usuario:
+            comentario["comentario"] = datos_comentario["comentario"]
+            with open ("json/comentarios.json", "w") as f:
+                json.dump(comentarios, f, indent=4)
+                f.close()
+            return Response("cambio hecho con exito", status=HTTPStatus.OK)
+    else:
+        return Response("Error al ingresar un dato", status=HTTPStatus.BAD_REQUEST)
+
+
+@app.route("/<id_usuario>/comentario/<id_comentario>", methods=["DELETE"])
+def eliminar_comentario(id_usuario , id_comentario):
+    id_comentario = int(id_comentario)
+    id_usuario = int(id_usuario)
+
+    for comentario in comentarios["comentarios"]:
+        if comentario == {}:
+            continue
+        elif comentario["id"] == id_comentario and comentario["id_usuario"] == id_usuario:
+            comentario.clear()
+            with open ("json/comentarios.json", "w") as f:
+                json.dump(comentarios, f, indent=4)
+                f.close()
+            return Response("su comentario se ha borrado", status=HTTPStatus.OK)
+    else:
+        return Response("El comentario no existe o no tienes la autorizacion", status=HTTPStatus.BAD_REQUEST)
