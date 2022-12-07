@@ -9,40 +9,22 @@ peliculas = json.load(open("json/peliculas.json"))
 comentarios = json.load(open("json/comentarios.json"))
 
 
-
-@app.route("/")
-def home():
-    return usuarios
-
 #Usuarios
 @app.route("/sign-in/<nombre>/<contrasena>", methods=["GET"])
 def sign_in(nombre,contrasena):
     #le paso el nombre y la contrasena por url porque no se ve y se puede realizar un metodo GET
-    #datos_usuario = request.get_json()
-    bool_nick = False
-    bool_contra = False
 
     for usuario in usuarios["usuarios"]:
         if usuario["nombre"] == nombre and usuario["contrasena"] == contrasena:
             return usuario
     else:
-        return Response("Error al ingresar un dato", status=HTTPStatus.BAD_REQUEST)
+        return Response({}, status=HTTPStatus.BAD_REQUEST)
 
 
 #Peliculas
 @app.route("/peliculas")
 def mostrar_peliculas():
-    lista_peliculas =[]
-    for pelicula in peliculas["peliculas"]:
-        dic_pelicula = {
-            "id": pelicula["id"],
-            "titulo": pelicula["titulo"], 
-            "anno": pelicula["anno"],
-            "director": pelicula["director"]
-        }
-        lista_peliculas.append(dic_pelicula)
-    return lista_peliculas
-#o puedo devovler las peliculas enteras y filtrar desde el programa, veo que onda despues
+    return peliculas
 
 
 @app.route("/peliculas/<id>")
