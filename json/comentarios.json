@@ -1,16 +1,26 @@
 {
     "comentarios": [
         {
-            "comentario": "Buenardo, nashe",
+            "comentario": "Buenardo, nashe, ashesaasdfas",
             "id": 1,
-            "id_usuario": 1,
+            "id_usuario": 2,
+            "nombre_usuario": "mariobostero",
             "id_pelicula": 2
         },
         {
-            "comentario": "alta verga",
+            "comentario": "guenarda al final che",
             "id": 2,
             "id_usuario": 1,
+            "nombre_usuario": "admin",
             "id_pelicula": 2
-        }
+        },
+        {
+            "comentario": "buenisima che",
+            "nombre_usuario": "admin",
+            "id": 3,
+            "id_usuario": 1,
+            "id_pelicula": 2
+        },
+        {}
     ]
 }

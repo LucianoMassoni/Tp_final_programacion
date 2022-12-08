@@ -123,16 +123,15 @@ def crear_comentario_pelicula(id_usuario, id_pelicula):
     else:
         return Response("Error al ingresar un dato", status=HTTPStatus.BAD_REQUEST)
 
-@app.route("/<id_usuario>/comentario/<id_comentario>", methods=["PUT"])
-def modificar_comentario(id_usuario, id_comentario):
+@app.route("/comentario/<id_comentario>", methods=["PUT"])
+def modificar_comentario(id_comentario):
     id_comentario = int(id_comentario)
-    id_usuario = int(id_usuario)
     datos_comentario = request.get_json()
 
     for comentario in comentarios["comentarios"]:
         if comentario == {}:
             continue
-        elif comentario["id"] == id_comentario and comentario["id_usuario"] == id_usuario:
+        elif comentario["id"] == id_comentario:
             comentario["comentario"] = datos_comentario["comentario"]
             with open ("json/comentarios.json", "w") as f:
                 json.dump(comentarios, f, indent=4)
@@ -142,15 +141,14 @@ def modificar_comentario(id_usuario, id_comentario):
         return Response("Error al ingresar un dato", status=HTTPStatus.BAD_REQUEST)
 
 
-@app.route("/<id_usuario>/comentario/<id_comentario>", methods=["DELETE"])
-def eliminar_comentario(id_usuario , id_comentario):
+@app.route("/comentario/<id_comentario>", methods=["DELETE"])
+def eliminar_comentario(id_comentario):
     id_comentario = int(id_comentario)
-    id_usuario = int(id_usuario)
 
     for comentario in comentarios["comentarios"]:
         if comentario == {}:
             continue
-        elif comentario["id"] == id_comentario and comentario["id_usuario"] == id_usuario:
+        elif comentario["id"] == id_comentario:
             comentario.clear()
             with open ("json/comentarios.json", "w") as f:
                 json.dump(comentarios, f, indent=4)

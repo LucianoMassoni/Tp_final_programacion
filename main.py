@@ -11,7 +11,7 @@ def app_sign_in(nombre,contrasena):
     else:
         return None
 
-def app_mostar_peliculas():
+def app_mostrar_peliculas():
     r = requests.get(my_url+"/peliculas")
     return r.json()
 
@@ -31,6 +31,23 @@ def app_modificar_pelicula(id, pelicula):
     
 def app_eliminar_pelicula(id):
     requests.delete(my_url+"/peliculas/"+id)
+
+def app_mostar_comentarios(id_pelicula):
+    r = requests.get(my_url+"/peliculas/"+id_pelicula+"/comentarios")
+    if r.ok:
+        return r.json()
+    else:
+        return None
+
+def app_crear_comentario(id_usuario, id_pelicula, comentario):
+    requests.post(my_url+"/"+id_usuario+"/peliculas/"+id_pelicula+"/comentarios", json=comentario)
+
+def app_modificar_comentario(id_comentario, comentario):
+    requests.put(my_url+"/comentario/"+id_comentario, json=comentario)
+
+def app_eliminar_comentario(id_comentario):
+    requests.delete(my_url+"/comentario/"+id_comentario)
+
 #--------------------------------------------------------------------------------------------
 #main.py
 def menu():
@@ -64,10 +81,11 @@ def menu_usuario():
 
 def menu_pelicula():
     op = -1
-    while op < 0 or op > 3:
-        print("\n1. ver mis comentarios de la pelicula")
-        print("2. modificar pelicula")
-        print("3. eliminar pelicula")
+    while op < 0 or op > 4:
+        print("\n1. agregar comentario")
+        print("2. ver mis comentarios de la pelicula")
+        print("3. modificar pelicula")
+        print("4. eliminar pelicula")
         print('0. volver')
         op = input("ingrese su opcion: ")
         if op.isalpha():
@@ -79,7 +97,7 @@ def menu_pelicula():
 def menu_comentarios():
     op = -1
     while op < 0 or op > 2:
-        print("1. modificar comentario")
+        print("\n1. modificar comentario")
         print("2. eliminar comentario")
         print("0. volver")
         op = input("ingrese su opcion: ")
@@ -91,7 +109,7 @@ def menu_comentarios():
     
 
 def ingreso():
-    #os.system("clear")
+    os.system("clear")
     print("USUARIO")
     print("sign in")
     nombre = input("Nombre: ")
@@ -101,11 +119,10 @@ def ingreso():
     if usuario == None:
         return None
     else:
-        flag = 0
         return usuario
 
 def mostar_peliculas():
-    peliculas = app_mostar_peliculas()
+    peliculas = app_mostrar_peliculas()
     for pelicula in peliculas["peliculas"]:
         if pelicula == {}:
             continue
@@ -116,7 +133,7 @@ def mostar_peliculas():
             print(pelicula["duracion"], "\n")
 
 def buscar_pelicula(nombre):
-    peliculas = app_mostar_peliculas()
+    peliculas = app_mostrar_peliculas()
     for pelicula in peliculas["peliculas"]:
         if pelicula == {}:
             continue
@@ -132,8 +149,13 @@ def mostrar_pelicula(id):
             continue
         else:
             print(i, ": ", pelicula[i] ,sep='')
+    print("COMENTARIOS")
+    comentarios = app_mostar_comentarios(str(id))
+    for comentario in comentarios:
+        print(comentario["nombre_usuario"],": ", comentario["comentario"], sep="")
 
 def agregar_pelicula():
+    print("AGREGAR PELICULA")
     pelicula = {}
     print("para agregar una pelicula se necesitan los siguientes datos:")
     pelicula["titulo"] = input("titulo: ")
@@ -179,10 +201,56 @@ def modificar_pelicula(id):
 def eliminar_pelicula(id):
     app_eliminar_pelicula(id)
 
-#def mostar_comentarios(id_pelicula):
+#comentarios--
+def crear_comentario(usuario, id_pelicula):
+    comentario = {}
+    print("CREAR COMENTARIO")
+    comentario["comentario"] = input("Ingrese su comentario: ")
+    comentario["nombre_usuario"] = usuario["nombre"]
+    app_crear_comentario(str(usuario["id"]), str(id_pelicula), comentario)
+
+def buscar_tus_comentarios(id_usuario, id_pelicula):
+    comentarios = app_mostar_comentarios(str(id_pelicula))
+    lista_comentarios = []
+    for comentario in comentarios:
+        if comentario["id_usuario"] == id_usuario:
+            lista_comentarios.append(comentario)
+    return lista_comentarios
 
 
+def mostrar_tus_comentarios(id_usuario, id_pelicula):
+    comentarios = buscar_tus_comentarios(id_usuario, id_pelicula)
+    for comentario in comentarios:
+        print("nro.", comentario["id"],"|", comentario["nombre_usuario"],": ", comentario["comentario"], sep="")
+        
+def buscar_comentario(id, id_pelicula):
+    comentarios = app_mostar_comentarios(str(id_pelicula))
+    for comentario in comentarios:
+        if comentario["id"] == id:
+            return comentario
+    else:
+        return None
 
+def modificar_comentario(id_pelicula):
+    print("MODIFICAR COMENTARIO")
+    id_comentario = int(input("ingrese el nro de su comentario: "))
+    comentario = buscar_comentario(id_comentario, id_pelicula)
+    print(comentario)
+    if comentario == None:
+        return "El comentario no existe"
+    else:
+        
+        comentario["comentario"] = input("ingrese la modificacion de su comentario: ")
+        app_modificar_comentario(str(comentario["id"]), comentario)
+
+def eliminar_comentario(id_pelicula):
+    print("ELIMINAR COMENTARIO")
+    id_comentario = int(input("ingrese el nro de su comentario: "))
+    comentario = buscar_comentario(id_comentario, id_pelicula)
+    if comentario == None:
+        print("el comentario no existe")
+    else:
+        app_eliminar_comentario(str(comentario["id"]))
 #--------------------------------------------------------------------------------------------
 #main
 
@@ -207,7 +275,6 @@ while op_usuario != 0:
         while op_menu_usuario != 0:
             if op_menu_usuario == 1:
                 #os.system("clear")
-                print("AGREGAR PELICULA")
                 agregar_pelicula()
             elif op_menu_usuario == 2:
                 #os.system("clear")
@@ -223,30 +290,25 @@ while op_usuario != 0:
                 
                 op_menu_pelicula = menu_pelicula()
                 if op_menu_pelicula == 1:
-                    #mostar_comentarios(id_pelicula)
-                    op_comentario = -1
-                    while op_comentario != 0 or op_comentario != 1:
-                        print("1. buscar comentario")
-                        print("0. volver")
-                        op_comentario = input("ingrese su opcion: ")
-                        if op_comentario.isalpha():
-                            op_comentario = -1
-                        else:
-                            op_comentario = int(op_comentario)
-                    if op_comentario == 0:
-                        op_menu_pelicula = menu_pelicula()
-                    else:
-                        comentario = input("ingrese el id del comentario: ")
-                        id_comentario = buscar_comentario(comentario)
-                        if id_comentario == None:
-                            print("El comentario no existe")
-                        else:    
-                            #mostrar_comentario(id_comentario)
-                            op_menu_comentario = menu_comentarios()
-                            #while op_menu_cometario?
+                    crear_comentario(usuario, id_pelicula)
                 elif op_menu_pelicula == 2:
-                    modificar_pelicula(id_pelicula)
+                    mostrar_tus_comentarios(usuario["id"], id_pelicula)
+                    op_menu_comentarios = menu_comentarios()
+                    while op_menu_comentarios != 0:
+                        if op_menu_comentarios == 1:
+                            modificar_comentario(id_pelicula)
+                            op_menu_comentarios = menu_comentarios()
+                            continue
+                        elif op_menu_comentarios == 2:
+                            eliminar_comentario(id_pelicula)
+                            op_menu_comentarios = menu_comentarios()
+                            continue
+                        else:
+                            break
+
                 elif op_menu_pelicula == 3:
+                    modificar_pelicula(id_pelicula)
+                elif op_menu_pelicula == 4:
                     eliminar_pelicula(id_pelicula)
             
             else: # else de op_menu_usuario
