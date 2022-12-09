@@ -143,21 +143,16 @@ def mostar_peliculas():
     os.system("clear")
     print("----------------------- LISTA DE PELICULAS ---------------------")
     peliculas = app_mostrar_peliculas()
-    for pelicula in peliculas["peliculas"]:
-        if pelicula == {}:
-            continue
-        else:
-            print(pelicula["titulo"])
-            print("director:", pelicula["director"])
-            print("anno:", pelicula["anno"])
-            print("duracion:", pelicula["duracion"], "\n")
+    for pelicula in peliculas:
+        print(pelicula["titulo"])
+        print("director:", pelicula["director"])
+        print("anno:", pelicula["anno"])
+        print("duracion:", pelicula["duracion"], "\n")
 
 def buscar_pelicula(nombre):
     peliculas = app_mostrar_peliculas()
-    for pelicula in peliculas["peliculas"]:
-        if pelicula == {}:
-            continue
-        elif pelicula["titulo"].lower() == nombre.lower():
+    for pelicula in peliculas:
+        if pelicula["titulo"].lower() == nombre.lower():
             return pelicula["id"]
     else:
         return None
@@ -288,45 +283,81 @@ def eliminar_comentario(id_pelicula, id_usuario):
 def lista_directores():
     peliculas = app_mostrar_peliculas()
     directores = []
-    for pelicula in peliculas["peliculas"]:
-        if pelicula == {}:
-            continue
-        else:
-            directores.append(pelicula["director"])
+    for pelicula in peliculas:
+        directores.append(pelicula["director"])
     return set(directores)
     
 def buscar_por_director(nombre):
     peliculas = app_mostrar_peliculas()
     lista_peliculas = []
-    for pelicula in peliculas["peliculas"]:
-        if pelicula == {}:
-            continue
-        elif pelicula["director"].lower() == nombre.lower():
+    for pelicula in peliculas:
+        if pelicula["director"].lower() == nombre.lower():
             lista_peliculas.append(pelicula["id"])
     return lista_peliculas
+
+def mostrar_por_director():
+    os.system("clear")
+    print("BUSCAR POR DIRECTOR")
+    directores = lista_directores()
+    print ("lista de los directores")
+    for director in directores:
+        print(director, end="  |  ")
+    print()
+
+    nombre = input("Nombre del director: ")
+    lista_peliculas = buscar_por_director(nombre)
+    if lista_peliculas == []:
+        print("No hay peliculas de ese director")
+        c = input("Presione enter para volver... ")
+    else:
+        for pelicula in lista_peliculas:
+            mostrar_pelicula(pelicula)
+        c = input("Presione enter para volver... ")
 
 def lista_generos():
     peliculas = app_mostrar_peliculas()
     generos = []
-    for pelicula in peliculas["peliculas"]:
-        if pelicula == {}:
-            continue
-        else:
-            for genero in pelicula["genero"]:
-                generos.append(genero)
+    for pelicula in peliculas:
+        for genero in pelicula["genero"]:
+            generos.append(genero)
     return set(generos)
 
 def buscar_por_genero(genero):
     peliculas = app_mostrar_peliculas()
     lista_peliculas = []
-    for pelicula in peliculas["peliculas"]:
-        if pelicula == {}:
-            continue
-        else:
-            for i in pelicula["genero"]:
-                if i.lower() == genero.lower():
-                    lista_peliculas.append(pelicula["id"])
+    for pelicula in peliculas:
+        for i in pelicula["genero"]:
+            if i.lower() == genero.lower():
+                lista_peliculas.append(pelicula["id"])
     return lista_peliculas
+
+def mostrar_por_genero():
+    os.system("clear")
+    print("BUSCAR POR GENERO")
+    generos = lista_generos()
+    print("lista de generos")
+    for genero in generos:
+        print(genero, end="  |  ")
+    print()
+    nombre = input("Nombre del genero: ")
+    lista_de_generos = buscar_por_genero(nombre)
+    if lista_de_generos == []:
+        print("ese genero no esta")
+        c = input("Presione enter para volver...")
+    else:
+        for pelicula in lista_de_generos:
+            mostrar_pelicula(pelicula)
+        c = input("Presione enter para volver... ")
+
+def mostar_ult_diez_peliculas():
+    peliculas = app_mostrar_peliculas()
+    print("----------------------- LISTA DE PELICULAS ---------------------")
+    for i in range(-10, 0):
+        pelicula = peliculas[i]
+        print(pelicula["titulo"])
+        print("director:", pelicula["director"])
+        print("anno:", pelicula["anno"])
+        print("duracion:", pelicula["duracion"], "\n")
 
 
 def salir():
@@ -385,45 +416,12 @@ while True:
                         eliminar_pelicula(id_pelicula)
                         break
             elif op_menu_usuario == 3:
-                os.system("clear")
-                print("BUSCAR POR DIRECTOR")
-                directores = lista_directores()
-                print ("lista de los directores")
-                for director in directores:
-                    print(director, end="  |  ")
-                print()
-
-                nombre = input("Nombre del director: ")
-                lista_peliculas = buscar_por_director(nombre)
-                if lista_peliculas == []:
-                    print("No hay peliculas de ese director")
-                    c = input("Presione enter para volver")
-                    break
-                else:
-                    for pelicula in lista_peliculas:
-                        mostrar_pelicula(pelicula)
-                    c = input("Presione enter para volver")
-                    break
+                mostrar_por_director()
+                break
                 
             elif op_menu_usuario == 4:
-                os.system("clear")
-                print("BUSCAR POR GENERO")
-                generos = lista_generos()
-                print("lista de generos")
-                for genero in generos:
-                    print(genero, end="  |  ")
-                print()
-                nombre = input("Nombre del genero: ")
-                lista_de_generos = buscar_por_genero(nombre)
-                if lista_de_generos == []:
-                    print("ese genero no esta")
-                    c = input("Presione enter para volver...")
-                    break
-                else:
-                    for pelicula in lista_de_generos:
-                        mostrar_pelicula(pelicula)
-                    c = input("Presione enter para volver... ")
-                    break
+                mostrar_por_genero()
+                break
             else:
                 print("salistes")
                 os.system("sleep 3")
@@ -436,9 +434,11 @@ while True:
     elif usuario == 0:
         op_invitado = -1
         os.system("clear")
-        while op_invitado < 0 or op_invitado > 1:
-            mostar_peliculas()
+        while op_invitado < 0 or op_invitado > 3:
+            mostar_ult_diez_peliculas()
             print("1. buscar pelicula")
+            print("2. buscar por director")
+            print("3. buscar por genero"            )
             print("0. salir")
             op_invitado = input("ingrese su opcion: ")
             if op_invitado.isalpha() or op_invitado == '':
@@ -458,6 +458,12 @@ while True:
                     mostrar_pelicula(id_pelicula)
                     c = input("\npresione enter para volver... ")
                     break
+            elif op_invitado == 2:
+                mostrar_por_director()
+                break
+            elif op_invitado == 3:
+                mostrar_por_genero()
+                break
         else:
             salir()
             break

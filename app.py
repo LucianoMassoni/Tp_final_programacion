@@ -24,7 +24,13 @@ def sign_in(nombre,contrasena):
 #Peliculas
 @app.route("/peliculas")
 def mostrar_peliculas():
-    return peliculas
+    lista_peliculas = []
+    for pelicula in peliculas["peliculas"]:
+        if pelicula == {}:
+            continue
+        else:
+            lista_peliculas.append(pelicula)
+    return lista_peliculas
 
 
 @app.route("/peliculas/<id>")
