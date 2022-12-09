@@ -31,7 +31,9 @@ def mostrar_peliculas():
 def info_pelicula(id):
     int_id = int(id)
     for pelicula in peliculas["peliculas"]:
-        if pelicula["id"] == int_id:
+        if pelicula == {}:
+            continue
+        elif pelicula["id"] == int_id:
             return pelicula
     else:
         return Response({}, status=HTTPStatus.BAD_REQUEST)
@@ -43,7 +45,9 @@ def cargar_pelicula():
     
     datos_pelicula = request.get_json()
     for pelicula in peliculas["peliculas"]:
-        if pelicula["titulo"].lower() == datos_pelicula["titulo"].lower():
+        if pelicula == {}:
+            continue
+        elif pelicula["titulo"].lower() == datos_pelicula["titulo"].lower():
             return Response("La pelicula ya existe", status=HTTPStatus.BAD_REQUEST)
     else:
         datos_pelicula["id"] = ult_id

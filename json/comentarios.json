@@ -1,14 +1,14 @@
 {
     "comentarios": [
         {
-            "comentario": "Buenardo, nashe, ashesaasdfas",
+            "comentario": "puedo modificar el comentario de otro usuario ._.",
             "id": 1,
             "id_usuario": 2,
             "nombre_usuario": "mariobostero",
             "id_pelicula": 2
         },
         {
-            "comentario": "guenarda al final che",
+            "comentario": "na le erre",
             "id": 2,
             "id_usuario": 1,
             "nombre_usuario": "admin",
@@ -21,6 +21,7 @@
             "id_usuario": 1,
             "id_pelicula": 2
         },
+        {},
         {}
     ]
 }

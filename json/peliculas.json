@@ -211,6 +211,21 @@
             "poster": "https://www.imdb.com/title/tt0094721/mediaviewer/rm2212181760/?ref_=tt_ov_i",
             "id": 16
         },
+        {},
+        {
+            "titulo": "Dracula",
+            "anno": "1992",
+            "director": "Francis Ford Coppola",
+            "duracion": "128 min.",
+            "genero": [
+                "Drama",
+                "Fantasia",
+                "Terror"
+            ],
+            "sinopsis": "El centenario vampiro conde Dracula llega a Inglaterra para seducir a la prometida del abogado Jonathan Harker, Mina Murray, y a causar estragos en tierra extranjera.",
+            "poster": "https://www.imdb.com/title/tt0103874/mediaviewer/rm609492736/?ref_=tt_ov_i",
+            "id": 18
+        },
         {}
     ]
 }
