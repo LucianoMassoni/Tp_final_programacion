@@ -75,7 +75,7 @@ def menu_usuario():
         print("4. buscar por genero")
         print('0. volver')
         op = input("ingrese su opcion: ")
-        if op.isalpha():
+        if op.isalpha() or op == '':
             op = -1
         else:
             op = int(op)
@@ -90,7 +90,7 @@ def menu_pelicula():
         print("4. eliminar pelicula")
         print('0. volver')
         op = input("ingrese su opcion: ")
-        if op.isalpha():
+        if op.isalpha() or op == '':
             op = -1
         else:
             op = int(op)
@@ -103,16 +103,30 @@ def menu_comentarios():
         print("2. eliminar comentario")
         print("0. volver")
         op = input("ingrese su opcion: ")
-        if op.isalpha():
+        if op.isalpha() or op == '':
             op = -1
         else:
             op = int(op)
     return op
-    
+
+def menu_ingreso():
+    op = -1
+    while op < 0 or op > 2:
+        print("error al ingresar un dato")
+        print("1. Reingresar")
+        print("2. entrar como invitado")
+        print("0. salir")
+        op = input("su opcion: ")
+        if op.isalpha() or op == '':
+            op = -1
+        else:
+            op = int(op)
+    return op
 
 def ingreso():
     op_usuario = menu()
     while op_usuario != 0:
+        os.system("clear")
         if op_usuario == 1:
             print("USUARIO")
             print("sign in")
@@ -120,11 +134,7 @@ def ingreso():
             contrasena = input("Contrasena: ")
             usuario = app_sign_in(nombre, contrasena)
             if usuario == None:
-                print("error al ingresar un dato")
-                print("1. Reingresar")
-                print("2. entrar como invitado")
-                print("0. salir")
-                op_ingreso = int(input("su opcion: "))
+                op_ingreso = menu_ingreso()
                 if op_ingreso == 1:
                     continue
                 if op_ingreso == 2:
@@ -308,11 +318,11 @@ def mostrar_por_director():
     lista_peliculas = buscar_por_director(nombre)
     if lista_peliculas == []:
         print("No hay peliculas de ese director")
-        c = input("Presione enter para volver... ")
+        c = input("\nPresione enter para volver... ")
     else:
         for pelicula in lista_peliculas:
             mostrar_pelicula(pelicula)
-        c = input("Presione enter para volver... ")
+        c = input("\nPresione enter para volver... ")
 
 def lista_generos():
     peliculas = app_mostrar_peliculas()
@@ -343,11 +353,11 @@ def mostrar_por_genero():
     lista_de_generos = buscar_por_genero(nombre)
     if lista_de_generos == []:
         print("ese genero no esta")
-        c = input("Presione enter para volver...")
+        c = input("\nPresione enter para volver...")
     else:
         for pelicula in lista_de_generos:
             mostrar_pelicula(pelicula)
-        c = input("Presione enter para volver... ")
+        c = input("\nPresione enter para volver... ")
 
 def mostar_ult_diez_peliculas():
     peliculas = app_mostrar_peliculas()
@@ -408,7 +418,7 @@ while True:
                                 eliminar_comentario(id_pelicula, usuario["id"])
                                 break
                         else:
-                            break
+                            continue
                     elif op_menu_pelicula == 3:
                         modificar_pelicula(id_pelicula)
                         break
