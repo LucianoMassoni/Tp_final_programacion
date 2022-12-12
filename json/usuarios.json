@@ -1,0 +1,25 @@
+{
+    "usuarios":[
+        {
+            "id": 1,
+            "nombre": "admin",
+            "contrasena": "1234"
+        },
+        {
+            "id": 2,
+            "nombre": "mariobostero",
+            "contrasena": "aguantegoku12"
+        },
+        {
+            "id": 3,
+            "nombre": "kevin",
+            "contrasena": "todaslasnenassondelkevin"
+        },
+        {
+            "id": 4,
+            "nombre": "dylan",
+            "contrasena": "eldylannolabura"
+        }
+
+    ]
+}
