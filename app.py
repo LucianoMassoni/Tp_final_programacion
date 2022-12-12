@@ -12,8 +12,6 @@ comentarios = json.load(open("json/comentarios.json"))
 #Usuarios
 @app.route("/sign-in/<nombre>/<contrasena>", methods=["GET"])
 def sign_in(nombre,contrasena):
-    #le paso el nombre y la contrasena por url porque no se ve y se puede realizar un metodo GET
-
     for usuario in usuarios["usuarios"]:
         if usuario["nombre"] == nombre and usuario["contrasena"] == contrasena:
             return usuario

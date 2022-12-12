@@ -73,7 +73,7 @@ def menu_usuario():
         print("2. buscar pelicula")
         print("3. buscar por director")
         print("4. buscar por genero")
-        print('0. volver')
+        print('0. salir')
         op = input("ingrese su opcion: ")
         if op.isalpha() or op == '':
             op = -1
@@ -181,6 +181,7 @@ def mostrar_pelicula(id):
     comentarios = app_mostar_comentarios(str(id))
     for comentario in comentarios:
         print(comentario["nombre_usuario"],": ", comentario["comentario"], sep="")
+    print("-----------------------------------------------------------------------")
 
 def agregar_pelicula():
     print("AGREGAR PELICULA")
@@ -256,6 +257,7 @@ def buscar_tus_comentarios(id_usuario, id_pelicula):
 
 def mostrar_tus_comentarios(id_usuario, id_pelicula):
     comentarios = buscar_tus_comentarios(id_usuario, id_pelicula)
+    print("----------------------------------------------------")
     for comentario in comentarios:
         print("nro.", comentario["id"],"|", comentario["nombre_usuario"],": ", comentario["comentario"], sep="")
         
@@ -401,29 +403,34 @@ while True:
                     os.system("sleep 1")
                     break   
                 else:
-                    os.system("clear")
-                    mostrar_pelicula(id_pelicula)
-                    op_menu_pelicula = menu_pelicula()
+                    op_menu_pelicula = -1
                     #while op_menu_pelicula?
-                    if op_menu_pelicula == 1:
-                        crear_comentario(usuario, id_pelicula)
-                    elif op_menu_pelicula == 2:
-                        mostrar_tus_comentarios(usuario["id"], id_pelicula)
-                        op_menu_comentarios = menu_comentarios()
-                        while op_menu_comentarios != 0:
-                            if op_menu_comentarios == 1:
-                                modificar_comentario(id_pelicula, usuario["id"])
-                                break
-                            elif op_menu_comentarios == 2:
-                                eliminar_comentario(id_pelicula, usuario["id"])
-                                break
-                        else:
+                    while op_menu_pelicula != 0:
+                        os.system("clear")
+                        mostrar_pelicula(id_pelicula)
+                        op_menu_pelicula = menu_pelicula()
+                        if op_menu_pelicula == 1:
+                            crear_comentario(usuario, id_pelicula)
                             continue
-                    elif op_menu_pelicula == 3:
-                        modificar_pelicula(id_pelicula)
-                        break
-                    elif op_menu_pelicula == 4:
-                        eliminar_pelicula(id_pelicula)
+                        elif op_menu_pelicula == 2:
+                            mostrar_tus_comentarios(usuario["id"], id_pelicula)
+                            op_menu_comentarios = menu_comentarios()
+                            while op_menu_comentarios != 0:
+                                if op_menu_comentarios == 1:
+                                    modificar_comentario(id_pelicula, usuario["id"])
+                                    break
+                                elif op_menu_comentarios == 2:
+                                    eliminar_comentario(id_pelicula, usuario["id"])
+                                    break
+                            else:
+                                continue
+                        elif op_menu_pelicula == 3:
+                            modificar_pelicula(id_pelicula)
+                            break
+                        elif op_menu_pelicula == 4:
+                            eliminar_pelicula(id_pelicula)
+                            break
+                    else:
                         break
             elif op_menu_usuario == 3:
                 mostrar_por_director()

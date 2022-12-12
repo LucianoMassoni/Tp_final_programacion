@@ -29,13 +29,6 @@
             "id": 6,
             "id_usuario": 1,
             "id_pelicula": 15
-        },
-        {
-            "comentario": "vite como e",
-            "nombre_usuario": "admin",
-            "id": 7,
-            "id_usuario": 1,
-            "id_pelicula": 18
         }
     ]
 }
