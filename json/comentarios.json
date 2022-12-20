@@ -29,6 +29,13 @@
             "id": 6,
             "id_usuario": 1,
             "id_pelicula": 15
+        },
+        {
+            "comentario": "draculeush",
+            "nombre_usuario": "mariobostero",
+            "id": 7,
+            "id_usuario": 2,
+            "id_pelicula": 18
         }
     ]
 }
