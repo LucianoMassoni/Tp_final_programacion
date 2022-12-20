@@ -60,7 +60,7 @@ def menu():
         print("2. Ingresar como invitado")
         print("0. Salir")
         op = input("ingrese su opcion: ")
-        if op.isalpha():
+        if op.isalpha() or op =='':
             op = -1
         else:
             op = int(op)
@@ -291,8 +291,10 @@ def modificar_comentario(id_pelicula, id_usuario):
     comentario = buscar_comentario(id_comentario, id_pelicula)
     if comentario == None:
         print ("El comentario no existe")
+        c = input("\nPresione enter para volver... ")
     elif comentario["id_usuario"] != id_usuario:
         print ("El comentario no lo hiciste vos")
+        c = input("\nPresione enter para volver... ")
     else:
         comentario["comentario"] = input("ingrese la modificacion de su comentario: ")
         app_modificar_comentario(str(comentario["id"]), comentario)
@@ -303,8 +305,10 @@ def eliminar_comentario(id_pelicula, id_usuario):
     comentario = buscar_comentario(id_comentario, id_pelicula)
     if comentario == None:
         print("el comentario no existe")
+        c = input("\nPresione enter para volver... ")
     elif comentario["id_usuario"] != id_usuario:
         print ("El comentario no lo hiciste vos")
+        c = input("\nPresione enter para volver... ")
     else:
         app_eliminar_comentario(str(comentario["id"]))
 
