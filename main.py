@@ -60,7 +60,7 @@ def menu():
         print("2. Ingresar como invitado")
         print("0. Salir")
         op = input("ingrese su opcion: ")
-        if op.isalpha():
+        if op.isalpha() or op =='':
             op = -1
         else:
             op = int(op)
@@ -235,8 +235,24 @@ def modificar_pelicula(id):
             continue    
         app_modificar_pelicula(str(id), pelicula)
 
-def eliminar_pelicula(id):
-    app_eliminar_pelicula(str(id))
+def eliminar_pelicula(id_pelicula, id_usuario):
+    comentarios = app_mostar_comentarios(str(id_pelicula))
+    comentario_otro_usuario = False
+    if comentarios != []:
+        for comentario in comentarios:
+            if comentario["id_usuario"] != id_usuario:
+                comentario_otro_usuario = True
+                break
+    if comentarios == []:
+        app_eliminar_pelicula(str(id_pelicula))
+    elif comentario_otro_usuario == False:
+        for comentario in comentarios:
+            app_eliminar_comentario(str(comentario["id"]))
+        app_eliminar_pelicula(str(id_pelicula))
+    else:
+        print("no se puede eliminar la pelicula, tiene comentarios de otros usuarios")
+        c = input("\nPresione enter para volver... ")
+
 
 #comentarios--
 def crear_comentario(usuario, id_pelicula):
@@ -275,8 +291,10 @@ def modificar_comentario(id_pelicula, id_usuario):
     comentario = buscar_comentario(id_comentario, id_pelicula)
     if comentario == None:
         print ("El comentario no existe")
+        c = input("\nPresione enter para volver... ")
     elif comentario["id_usuario"] != id_usuario:
         print ("El comentario no lo hiciste vos")
+        c = input("\nPresione enter para volver... ")
     else:
         comentario["comentario"] = input("ingrese la modificacion de su comentario: ")
         app_modificar_comentario(str(comentario["id"]), comentario)
@@ -287,8 +305,10 @@ def eliminar_comentario(id_pelicula, id_usuario):
     comentario = buscar_comentario(id_comentario, id_pelicula)
     if comentario == None:
         print("el comentario no existe")
+        c = input("\nPresione enter para volver... ")
     elif comentario["id_usuario"] != id_usuario:
         print ("El comentario no lo hiciste vos")
+        c = input("\nPresione enter para volver... ")
     else:
         app_eliminar_comentario(str(comentario["id"]))
 
@@ -426,10 +446,10 @@ while True:
                                 continue
                         elif op_menu_pelicula == 3:
                             modificar_pelicula(id_pelicula)
-                            break
+                            continue
                         elif op_menu_pelicula == 4:
-                            eliminar_pelicula(id_pelicula)
-                            break
+                            eliminar_pelicula(id_pelicula, usuario["id"])
+                            op_menu_pelicula = 0
                     else:
                         break
             elif op_menu_usuario == 3:
